@@ -28,6 +28,8 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.yubico.internal.util.json.JsonStringSerializable;
 import com.yubico.internal.util.json.JsonStringSerializer;
+
+import java.io.Serializable;
 import java.util.Optional;
 import java.util.stream.Stream;
 import lombok.AccessLevel;
@@ -46,7 +48,7 @@ import lombok.NonNull;
  */
 @JsonSerialize(using = JsonStringSerializer.class)
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
-public enum AttestationConveyancePreference implements JsonStringSerializable {
+public enum AttestationConveyancePreference implements JsonStringSerializable, Serializable {
 
     /**
      * Indicates that the Relying Party is not interested in authenticator attestation.

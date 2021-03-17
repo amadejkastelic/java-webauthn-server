@@ -27,6 +27,8 @@ package com.yubico.webauthn.data;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.yubico.internal.util.CollectionUtil;
+
+import java.io.Serializable;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -44,7 +46,7 @@ import lombok.Value;
  */
 @Value
 @Builder(toBuilder = true)
-public class PublicKeyCredentialCreationOptions {
+public class PublicKeyCredentialCreationOptions implements Serializable {
 
     /**
      * Contains data about the Relying Party responsible for the request.
@@ -160,12 +162,12 @@ public class PublicKeyCredentialCreationOptions {
         return new PublicKeyCredentialCreationOptionsBuilder.MandatoryStages();
     }
 
-    public static class PublicKeyCredentialCreationOptionsBuilder {
+    public static class PublicKeyCredentialCreationOptionsBuilder implements Serializable {
         private Long timeout = null;
         private Set<PublicKeyCredentialDescriptor> excludeCredentials = null;
         private AuthenticatorSelectionCriteria authenticatorSelection = null;
 
-        public static class MandatoryStages {
+        public static class MandatoryStages implements Serializable {
             private PublicKeyCredentialCreationOptionsBuilder builder = new PublicKeyCredentialCreationOptionsBuilder();
 
             /**

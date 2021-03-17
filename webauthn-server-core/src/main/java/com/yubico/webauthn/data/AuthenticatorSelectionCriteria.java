@@ -26,6 +26,8 @@ package com.yubico.webauthn.data;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
+
+import java.io.Serializable;
 import java.util.Optional;
 import lombok.Builder;
 import lombok.NonNull;
@@ -41,7 +43,7 @@ import lombok.Value;
  */
 @Value
 @Builder(toBuilder = true)
-public class AuthenticatorSelectionCriteria {
+public class AuthenticatorSelectionCriteria implements Serializable {
 
     /**
      * If present, eligible authenticators are filtered to only authenticators attached with the specified <a
@@ -88,7 +90,7 @@ public class AuthenticatorSelectionCriteria {
         this.userVerification = userVerification;
     }
 
-    public static class AuthenticatorSelectionCriteriaBuilder {
+    public static class AuthenticatorSelectionCriteriaBuilder implements Serializable {
         private AuthenticatorAttachment authenticatorAttachment = null;
 
         /**

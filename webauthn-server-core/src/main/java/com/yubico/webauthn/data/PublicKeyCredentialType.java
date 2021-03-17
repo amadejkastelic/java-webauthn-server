@@ -28,6 +28,8 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.yubico.internal.util.json.JsonStringSerializable;
 import com.yubico.internal.util.json.JsonStringSerializer;
+
+import java.io.Serializable;
 import java.util.Optional;
 import java.util.stream.Stream;
 import lombok.AllArgsConstructor;
@@ -49,7 +51,7 @@ import lombok.NonNull;
  */
 @JsonSerialize(using = JsonStringSerializer.class)
 @AllArgsConstructor
-public enum PublicKeyCredentialType implements JsonStringSerializable {
+public enum PublicKeyCredentialType implements JsonStringSerializable, Serializable {
     PUBLIC_KEY("public-key");
 
     @NonNull

@@ -29,6 +29,8 @@ import lombok.Builder;
 import lombok.NonNull;
 import lombok.Value;
 
+import java.io.Serializable;
+
 
 /**
  * Used to supply additional parameters when creating a new credential.
@@ -39,7 +41,7 @@ import lombok.Value;
  */
 @Value
 @Builder(toBuilder = true)
-public class PublicKeyCredentialParameters {
+public class PublicKeyCredentialParameters implements Serializable {
 
     /**
      * Specifies the cryptographic signature algorithm with which the newly generated credential will be used, and thus
@@ -87,8 +89,8 @@ public class PublicKeyCredentialParameters {
         return new PublicKeyCredentialParametersBuilder.MandatoryStages();
     }
 
-    public static class PublicKeyCredentialParametersBuilder {
-        public static class MandatoryStages {
+    public static class PublicKeyCredentialParametersBuilder implements Serializable {
+        public static class MandatoryStages implements Serializable {
             private PublicKeyCredentialParametersBuilder builder = new PublicKeyCredentialParametersBuilder();
 
             public PublicKeyCredentialParametersBuilder alg(COSEAlgorithmIdentifier alg) {

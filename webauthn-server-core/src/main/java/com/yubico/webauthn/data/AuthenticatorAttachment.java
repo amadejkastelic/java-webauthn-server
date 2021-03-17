@@ -29,6 +29,8 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.yubico.internal.util.json.JsonStringSerializable;
 import com.yubico.internal.util.json.JsonStringSerializer;
+
+import java.io.Serializable;
 import java.util.Optional;
 import java.util.stream.Stream;
 import lombok.AllArgsConstructor;
@@ -57,7 +59,7 @@ import lombok.NonNull;
  */
 @JsonSerialize(using = JsonStringSerializer.class)
 @AllArgsConstructor
-public enum AuthenticatorAttachment implements JsonStringSerializable {
+public enum AuthenticatorAttachment implements JsonStringSerializable, Serializable {
 
     /**
      * Indicates <a href="https://www.w3.org/TR/2019/PR-webauthn-20190117/#cross-platform-attachment">cross-platform

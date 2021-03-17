@@ -27,6 +27,8 @@ package com.yubico.webauthn.data;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.yubico.internal.util.CollectionUtil;
+
+import java.io.Serializable;
 import java.util.List;
 import java.util.Optional;
 import lombok.Builder;
@@ -46,7 +48,7 @@ import lombok.Value;
  */
 @Value
 @Builder(toBuilder = true)
-public class PublicKeyCredentialRequestOptions {
+public class PublicKeyCredentialRequestOptions implements Serializable {
 
     /**
      * A challenge that the selected authenticator signs, along with other data, when producing an authentication
@@ -130,12 +132,12 @@ public class PublicKeyCredentialRequestOptions {
         return new PublicKeyCredentialRequestOptionsBuilder.MandatoryStages();
     }
 
-    public static class PublicKeyCredentialRequestOptionsBuilder {
+    public static class PublicKeyCredentialRequestOptionsBuilder implements Serializable {
         private Long timeout = null;
         private String rpId = null;
         private List<PublicKeyCredentialDescriptor> allowCredentials = null;
 
-        public static class MandatoryStages {
+        public static class MandatoryStages implements Serializable {
             private PublicKeyCredentialRequestOptionsBuilder builder = new PublicKeyCredentialRequestOptionsBuilder();
 
             public PublicKeyCredentialRequestOptionsBuilder challenge(ByteArray challenge) {

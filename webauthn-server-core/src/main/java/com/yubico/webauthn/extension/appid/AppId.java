@@ -30,6 +30,7 @@ import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.google.common.net.InetAddresses;
 import java.io.IOException;
+import java.io.Serializable;
 import java.net.URI;
 import java.net.URISyntaxException;
 import lombok.NonNull;
@@ -43,7 +44,7 @@ import lombok.Value;
  */
 @Value
 @JsonSerialize(using = AppId.JsonSerializer.class)
-public class AppId {
+public class AppId implements Serializable {
 
     /**
      * The underlying string representation of this AppID.
@@ -102,7 +103,7 @@ public class AppId {
         }
     }
 
-    static class JsonSerializer extends com.fasterxml.jackson.databind.JsonSerializer<AppId> {
+    static class JsonSerializer extends com.fasterxml.jackson.databind.JsonSerializer<AppId> implements Serializable {
         @Override
         public void serialize(AppId value, JsonGenerator gen, SerializerProvider serializers) throws IOException {
             gen.writeString(value.getId());

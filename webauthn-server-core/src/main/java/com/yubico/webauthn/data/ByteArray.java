@@ -32,6 +32,8 @@ import com.yubico.internal.util.json.JsonStringSerializable;
 import com.yubico.internal.util.json.JsonStringSerializer;
 import com.yubico.webauthn.data.exception.Base64UrlException;
 import com.yubico.webauthn.data.exception.HexException;
+
+import java.io.Serializable;
 import java.util.Base64;
 import lombok.EqualsAndHashCode;
 import lombok.NonNull;
@@ -43,7 +45,7 @@ import lombok.ToString;
 @JsonSerialize(using = JsonStringSerializer.class)
 @EqualsAndHashCode
 @ToString(includeFieldNames = false, onlyExplicitlyIncluded = true)
-public final class ByteArray implements Comparable<ByteArray>, JsonStringSerializable {
+public final class ByteArray implements Comparable<ByteArray>, JsonStringSerializable, Serializable {
 
     private final static Base64.Encoder BASE64_ENCODER = Base64.getEncoder();
     private final static Base64.Decoder BASE64_DECODER = Base64.getDecoder();

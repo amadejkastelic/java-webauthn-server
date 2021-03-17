@@ -26,6 +26,8 @@ package com.yubico.webauthn.data;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
+
+import java.io.Serializable;
 import java.net.URL;
 import java.util.Optional;
 import lombok.Builder;
@@ -43,7 +45,7 @@ import lombok.Value;
  */
 @Value
 @Builder(toBuilder = true)
-public class RelyingPartyIdentity implements PublicKeyCredentialEntity {
+public class RelyingPartyIdentity implements PublicKeyCredentialEntity, Serializable {
 
     /**
      * The human-palatable name of the Relaying Party.
@@ -92,10 +94,10 @@ public class RelyingPartyIdentity implements PublicKeyCredentialEntity {
         return new RelyingPartyIdentityBuilder.MandatoryStages();
     }
 
-    public static class RelyingPartyIdentityBuilder {
+    public static class RelyingPartyIdentityBuilder implements Serializable {
         private URL icon = null;
 
-        public static class MandatoryStages {
+        public static class MandatoryStages implements Serializable {
             private RelyingPartyIdentityBuilder builder = new RelyingPartyIdentityBuilder();
 
             public Step2 id(String id) {

@@ -27,6 +27,8 @@ package com.yubico.webauthn;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.yubico.webauthn.data.PublicKeyCredentialRequestOptions;
+
+import java.io.Serializable;
 import java.util.Optional;
 import lombok.Builder;
 import lombok.NonNull;
@@ -38,7 +40,7 @@ import lombok.Value;
  */
 @Value
 @Builder(toBuilder = true)
-public class AssertionRequest {
+public class AssertionRequest implements Serializable {
 
     /**
      * An object that can be serialized to JSON and passed as the <code>publicKey</code> argument to
@@ -82,10 +84,10 @@ public class AssertionRequest {
         return new AssertionRequestBuilder.MandatoryStages();
     }
 
-    public static class AssertionRequestBuilder {
+    public static class AssertionRequestBuilder implements Serializable {
         private String username = null;
 
-        public static class MandatoryStages {
+        public static class MandatoryStages implements Serializable {
             private final AssertionRequestBuilder builder = new AssertionRequestBuilder();
 
             /**

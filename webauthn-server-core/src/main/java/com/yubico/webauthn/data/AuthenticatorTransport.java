@@ -29,6 +29,8 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.yubico.internal.util.json.JsonStringSerializable;
 import com.yubico.internal.util.json.JsonStringSerializer;
+
+import java.io.Serializable;
 import java.util.stream.Stream;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -55,7 +57,7 @@ import lombok.Value;
 @JsonSerialize(using = JsonStringSerializer.class)
 @Value
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
-public class AuthenticatorTransport implements Comparable<AuthenticatorTransport>, JsonStringSerializable {
+public class AuthenticatorTransport implements Comparable<AuthenticatorTransport>, JsonStringSerializable, Serializable {
 
     @NonNull
     private final String id;

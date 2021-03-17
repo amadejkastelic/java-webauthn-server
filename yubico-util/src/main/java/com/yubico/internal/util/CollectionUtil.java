@@ -1,5 +1,6 @@
 package com.yubico.internal.util;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -10,7 +11,7 @@ import java.util.Set;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
-public class CollectionUtil {
+public class CollectionUtil implements Serializable {
 
     /**
      * Make an unmodifiable shallow copy of the argument.

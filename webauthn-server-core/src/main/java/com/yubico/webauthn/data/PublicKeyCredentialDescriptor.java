@@ -28,6 +28,8 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.yubico.internal.util.CollectionUtil;
 import com.yubico.internal.util.ComparableUtil;
+
+import java.io.Serializable;
 import java.util.Optional;
 import java.util.Set;
 import java.util.SortedSet;
@@ -47,7 +49,7 @@ import lombok.Value;
  */
 @Value
 @Builder(toBuilder = true)
-public class PublicKeyCredentialDescriptor implements Comparable<PublicKeyCredentialDescriptor> {
+public class PublicKeyCredentialDescriptor implements Comparable<PublicKeyCredentialDescriptor>, Serializable {
 
     /**
      * The type of the credential the caller is referring to.
@@ -108,10 +110,10 @@ public class PublicKeyCredentialDescriptor implements Comparable<PublicKeyCreden
         return new PublicKeyCredentialDescriptorBuilder.MandatoryStages();
     }
 
-    public static class PublicKeyCredentialDescriptorBuilder {
+    public static class PublicKeyCredentialDescriptorBuilder implements Serializable {
         private Set<AuthenticatorTransport> transports = null;
 
-        public static class MandatoryStages {
+        public static class MandatoryStages implements Serializable {
             private PublicKeyCredentialDescriptorBuilder builder = new PublicKeyCredentialDescriptorBuilder();
 
             public PublicKeyCredentialDescriptorBuilder id(ByteArray id) {

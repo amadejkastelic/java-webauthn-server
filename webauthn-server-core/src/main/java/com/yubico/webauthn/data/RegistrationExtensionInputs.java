@@ -24,6 +24,7 @@
 
 package com.yubico.webauthn.data;
 
+import java.io.Serializable;
 import java.util.Collections;
 import java.util.Set;
 import lombok.AccessLevel;
@@ -45,7 +46,7 @@ import lombok.Value;
 @Value
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @Builder(toBuilder = true)
-public class RegistrationExtensionInputs implements ExtensionInputs {
+public class RegistrationExtensionInputs implements ExtensionInputs, Serializable {
 
     @Override
     public Set<String> getExtensionIds() {

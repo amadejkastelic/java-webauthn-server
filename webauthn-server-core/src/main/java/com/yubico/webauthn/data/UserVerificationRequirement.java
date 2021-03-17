@@ -28,6 +28,8 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.yubico.internal.util.json.JsonStringSerializable;
 import com.yubico.internal.util.json.JsonStringSerializer;
+
+import java.io.Serializable;
 import java.util.Optional;
 import java.util.stream.Stream;
 import lombok.AllArgsConstructor;
@@ -43,7 +45,7 @@ import lombok.NonNull;
  */
 @JsonSerialize(using = JsonStringSerializer.class)
 @AllArgsConstructor
-public enum UserVerificationRequirement implements JsonStringSerializable {
+public enum UserVerificationRequirement implements JsonStringSerializable, Serializable {
 
     /**
      * This value indicates that the Relying Party does not want user verification employed during the operation (e.g.,

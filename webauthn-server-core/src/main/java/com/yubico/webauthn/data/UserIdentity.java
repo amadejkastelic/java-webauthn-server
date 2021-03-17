@@ -26,6 +26,8 @@ package com.yubico.webauthn.data;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
+
+import java.io.Serializable;
 import java.net.URL;
 import java.util.Optional;
 import lombok.Builder;
@@ -43,7 +45,7 @@ import lombok.Value;
  */
 @Value
 @Builder(toBuilder = true)
-public class UserIdentity implements PublicKeyCredentialEntity {
+public class UserIdentity implements PublicKeyCredentialEntity, Serializable {
 
     /**
      * A human-palatable identifier for a user account. It is intended only for display, i.e., aiding the user in
@@ -138,10 +140,10 @@ public class UserIdentity implements PublicKeyCredentialEntity {
         return new UserIdentityBuilder.MandatoryStages();
     }
 
-    public static class UserIdentityBuilder {
+    public static class UserIdentityBuilder implements Serializable {
         private URL icon = null;
 
-        public static class MandatoryStages {
+        public static class MandatoryStages implements Serializable {
             private UserIdentityBuilder builder = new UserIdentityBuilder();
 
             public Step2 name(String name) {

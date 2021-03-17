@@ -28,6 +28,8 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.yubico.internal.util.json.JsonLongSerializable;
 import com.yubico.internal.util.json.JsonLongSerializer;
+
+import java.io.Serializable;
 import java.util.Optional;
 import java.util.stream.Stream;
 import lombok.Getter;
@@ -40,7 +42,7 @@ import lombok.Getter;
  * Cryptographic Algorithm Identifier (typedef COSEAlgorithmIdentifier)</a>
  */
 @JsonSerialize(using = JsonLongSerializer.class)
-public enum COSEAlgorithmIdentifier implements JsonLongSerializable {
+public enum COSEAlgorithmIdentifier implements JsonLongSerializable, Serializable {
     EdDSA(-8),
     ES256(-7),
     RS256(-257),

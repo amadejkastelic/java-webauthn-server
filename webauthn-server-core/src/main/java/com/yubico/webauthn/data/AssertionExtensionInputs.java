@@ -29,6 +29,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.yubico.webauthn.RelyingParty;
 import com.yubico.webauthn.StartAssertionOptions;
 import com.yubico.webauthn.extension.appid.AppId;
+
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
@@ -49,7 +51,7 @@ import lombok.Value;
  */
 @Value
 @Builder(toBuilder = true)
-public class AssertionExtensionInputs implements ExtensionInputs {
+public class AssertionExtensionInputs implements ExtensionInputs, Serializable {
 
     /**
      * The input to the FIDO AppID Extension (<code>appid</code>).
@@ -93,7 +95,7 @@ public class AssertionExtensionInputs implements ExtensionInputs {
         return ids;
     }
 
-    public static class AssertionExtensionInputsBuilder {
+    public static class AssertionExtensionInputsBuilder implements Serializable {
         private AppId appid = null;
 
         /**
